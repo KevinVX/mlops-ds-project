@@ -18,13 +18,13 @@ class DataValidation:
             
             for column in self.config.all_schema.keys():
                 if column not in data.columns:
-                    with open(self.config.STATUS_FILE, "a") as f:
+                    with open(self.config.STATUS_FILE, "w") as f:
                         f.write(f"Column {column} is not present in the data")
                     validation_status = False
 
             if validation_status:
-                with open(self.config.STATUS_FILE, "a") as f:
-                    f.write("All columns are present in the data")
+                with open(self.config.STATUS_FILE, "w") as f:
+                    f.write("Data validation: True")
             return validation_status
         
         except Exception as e:

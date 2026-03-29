@@ -44,21 +44,17 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f"created directory at: {path}")
 
 @ensure_annotations
-def save_json(path: Path, data: dict) -> None:
-    """
-    Saves data to a JSON file.
+def save_json(path: Path, data: dict):
+    """save json data
 
     Args:
-        path (str): The path to the JSON file.
-        data (Any): The data to be saved in JSON format.
+        path (Path): path to json file
+        data (dict): data to be saved in json file
     """
-    try:
-        with open(path, 'w') as json_file:
-            json.dump(data, json_file, indent=4)
-            logger.info(f"Data successfully saved to {path}")
-    except Exception as e:
-        logger.exception(f"Error saving JSON file: {e}")
-        raise
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+
+    logger.info(f"json file saved at: {path}")
 
 @ensure_annotations
 def load_json(path: Path) -> ConfigBox:
