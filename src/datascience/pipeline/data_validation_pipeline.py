@@ -1,0 +1,16 @@
+
+from src.datascience.components.data_validation import DataValidation
+from src.datascience.config.configuration import ConfiurationManager
+from src.datascience import logger
+
+STAGE_NMAE = "Data Validation Stage"
+
+class DataValidationPipeline:
+    def __init__(self):
+        pass
+
+    def initiate_data_validation(self):
+        config = ConfiurationManager()
+        data_validation_config = config.get_data_validation_config()
+        data_validation = DataValidation(config=data_validation_config)
+        data_validation.validate_all_columns()

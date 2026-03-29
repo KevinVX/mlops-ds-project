@@ -16,12 +16,3 @@ class DataIngestionPipeline:
         data_ingestion.download_file()
         data_ingestion.extract_zip_file()
 
-if __name__ == "__main__":
-    try:
-        logger.info(f">>>>> stage {STAGE_NMAE} started <<<<<")
-        obj = DataIngestionPipeline()
-        obj.initiate_data_ingestion()
-        logger.info(f">>>>> stage {STAGE_NMAE} completed <<<<<\n\nx==========x")
-    except Exception as e:
-        logger.exception(e)
-        raise e
